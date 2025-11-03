@@ -75,10 +75,10 @@ def update():
     for enemy in enemies:
         enemy.y += 5
         if enemy.y > HEIGHT:
-            enemy.x = randint(0,1120)
-            enemy.y = randint(-100,0)
+           enemy.x = randint(0,1120)
+           enemy.y = randint(-100,0)
 
-        #check for collision with bullets
+    #check for collision with bullets
         for bullet in bullets:
             if enemy.colliderect(bullet):
                 sounds.eep.play()
@@ -99,47 +99,32 @@ def update():
         enemy.x = randint(0,1120)
         enemy.y = randint(-100,0)
         enemies.append(enemy)
+
+#function to draw game over screen
+def game_over_screen():
+    screen.clear()
+    screen.fill("#62b6cb")
+    screen.draw.text("Game over!",(450,200),fontsize = 60,color = "white")
+    screen.draw.text(f"Score:{score}",(500,250),fontsize = 50, color = "white")
+    screen.draw.text("PRESS SPACE TO PLAY AGAIN",(350,300),fontsize = 50,color = "white")
+    if keyboard.SPACE:
+        restart_game()
+
+#function to restart game
+def restart_game():
+    global score, lives, bullets, enemies
+    score = 0
+    lives = 3
+    bullets = []
+    enemies = []
+    for i in range(8):
+        enemy = Actor("enemy.png") 
+        enemy.x = randint(0,1120)
+        enemy.y = randint(-100,0)
+        enemies.append(enemy)
+
         
-
-
-
-
-
-
-
-
             
-
-
-
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 pgzrun.go()
 
