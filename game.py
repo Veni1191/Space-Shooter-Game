@@ -77,6 +77,37 @@ def update():
         if enemy.y > HEIGHT:
             enemy.x = randint(0,1120)
             enemy.y = randint(-100,0)
+
+        #check for collision with bullets
+        for bullet in bullets:
+            if enemy.colliderect(bullet):
+                sounds.eep.play()
+                score += 5
+                bullets.remove(bullet)
+                enemies.remove(enemy)
+        
+        #collision with ship of enemies
+        if enemy.colliderect(spacecraft):
+            lives -= 1
+            enemies.remove(enemy)
+            if lives == 0:
+                is_game_over = True
+    
+    #continously make enemies
+    for i in range(8):
+        enemy = Actor("enemy.png") 
+        enemy.x = randint(0,1120)
+        enemy.y = randint(-100,0)
+        enemies.append(enemy)
+        
+
+
+
+
+
+
+
+
             
 
 
