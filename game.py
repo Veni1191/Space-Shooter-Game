@@ -15,7 +15,7 @@ bullets = []
 
 #creating the player
 spacecraft = Actor("shooter.png")
-
+spacecraft.pos = (600,540)
 #creating the enemies
 for i in range(8):
     enemy = Actor("enemy.png")
@@ -94,7 +94,7 @@ def update():
                 is_game_over = True
     
     #continously make enemies
-    for i in range(8):
+    if len(enemies)<8:
         enemy = Actor("enemy.png") 
         enemy.x = randint(0,1120)
         enemy.y = randint(-100,0)
